@@ -1,0 +1,27 @@
+pip install profanity-filter
+import re
+import pandas as pd 
+import numpy as np 
+import matplotlib.pyplot as plt 
+import string
+import warnings 
+from profanity_filter import ProfanityFilter
+
+pf = ProfanityFilter()
+/*Example- pf.censor("That's bullshit!")
+# "That's ********!"
+
+pf.censor_word('fuck')
+# Word(uncensored='fuck', censored='****', original_profane_word='fuck')
+*/
+train = pd.read_csv('https://raw.githubusercontent.com/dD2405/Twitter_Sentiment_Analysis/master/train.csv')
+pf.sensor(train)
+
+/*Multilingual analysis
+from profanity_filter import ProfanityFilter
+
+pf = ProfanityFilter(languages=['ru', 'en'])
+
+pf.censor("Да бля, это просто shit какой-то!")
+# "Да ***, это просто **** какой-то!"
+*/
